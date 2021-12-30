@@ -51,7 +51,7 @@ pipeline {
       steps {
         withDockerRegistry([credentialsId: "dockerhub", url: ""]) {
           sh 'printenv'
-          sh 'docker build -t asdrt4fd/test:""$GIT_COMMIT"" .'
+          sh 'sudo docker build -t asdrt4fd/test:""$GIT_COMMIT"" .'
           sh 'docker push asdrt4fd/test:""$GIT_COMMIT""'
         }
       }
