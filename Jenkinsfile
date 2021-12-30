@@ -34,7 +34,14 @@ pipeline {
 
     stage('SonarQube - SAST') {
       steps {
+        withSonarQubeEnv('SonarQube') {
         sh "mvn sonar:sonar -Dsonar.projectKey=jenkins -Dsonar.host.url=http://localhost:9000 -Dsonar.login=0d564476af71f7195be8c2f35818c9be7bd1e409"
+      }
+       timeout(time: 2, unit: 'MINUTES') {
+         script {
+           waitForQualityGate abortPipeline: true
+          }
+        }
       }
     }
 
