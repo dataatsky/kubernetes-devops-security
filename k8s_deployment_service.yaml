@@ -18,6 +18,8 @@ spec:
       containers:
       - image: replace
         name: devsecops-container
+        securityContext:
+         runAsNoonRoot: true
 ---
 apiVersion: v1
 kind: Service
