@@ -87,11 +87,9 @@ pipeline {
 
     stage('K8S Deployment - DEV') {
       steps {
-          {
             withKubeConfig([credentialsId: 'kubeconfig']) {
               sh "bash k8s-deployment.sh"
             }
-          }
       }
     }
 
