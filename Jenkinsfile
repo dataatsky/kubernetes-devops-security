@@ -87,7 +87,7 @@ pipeline {
 
     stage('K8S Deployment - DEV') {
       steps {
-          "Deployment": {
+          {
             withKubeConfig([credentialsId: 'kubeconfig']) {
               sh "bash k8s-deployment.sh"
             }
@@ -97,7 +97,7 @@ pipeline {
 
     stage('testkub') {
       steps {
-        "Rollout Status": {
+        {
           withKubeConfig([credentialsId: 'kubeconfig']) {
           sh "bash k8s-deployment-rollout-status.sh"
           }
